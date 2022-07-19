@@ -1,0 +1,111 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------ 第1章 OAuth2 是什么?  ------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+资源拥有者: 往往是注册用户
+客户端: 指访问受保护资源API的工具, 举例: 浏览器, APP 等 具有代理 资源拥有者
+
+授权服务器: 是资源拥有者和客户端 与 受保护资源之间的一个 访问桥梁 或者 权限路由机制!
+
+受保护资源: 往往存放在某个服务端上
+
+OAuth 就是 协调这四者之间关系的一种思想机制!
+
+
+npm install npm@latest --location=global
+
+sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------ 第2章 OAuth2 案例讲解 ------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+
+下载相关的代码:
+    git clone https://github.com/oauthinaction/oauth-in-action-code.git
+
+安装 Node.js
+    下载 安装包: https://nodejs.org/en/download/
+
+安装 成功校验:
+    yangjianwei@yangjianweideMacBook-Pro ~ % node -v
+    v10.24.1
+    yangjianwei@yangjianweideMacBook-Pro ~ % npm -v
+    6.14.12
+
+卸载 Node 和  NPM
+    rm -rf /usr/local/bin/node
+    rm -rf /usr/local/bin/npm
+    rm -rf /usr/local/lib/node_modules/npm/
+    rm -rf /usr/local/lib/node
+    rm -rf /usr/local/share/man/*/node.*
+
+
+案例1:
+    yangjianwei@yangjianweideMacBook-Pro oauth-in-action-code % cd exercises/ap-A-ex-0
+
+    yangjianwei@ip-192-168-43-13 ap-A-ex-0 % npm install
+
+    yangjianwei@ip-192-168-43-13 ap-A-ex-0 % node client.js
+    OAuth Client is listening at http://127.0.0.1:9000
+
+    yangjianwei@ip-192-168-43-13 ap-A-ex-0 % node authorizationServer.js
+    OAuth Authorization Server is listening at http://127.0.0.1:9001
+
+    yangjianwei@ip-192-168-43-13 ap-A-ex-0 % node protectedResource.js
+    OAuth Resource Server is listening at http://127.0.0.1:9002
+
+
+OAuth 生态中的概念: 单位正交基(非常重要)
+
+    OAuth 中的角色:
+        1、资源拥有者
+        2、客户端
+        3、授权服务器
+        4、受保护资源
+
+    OAuth 中的组件:
+        1、访问令牌: 是授权服务器 颁发给 客户端的 一种凭证!
+        2、权限范围: 指客户端能够访问 受保护资源服务器的 一组权限!
+        3、刷新令牌: 使用刷新令牌的是 客户端在访问 资源保护服务器时 因为令牌失效 造成的!
+        4、授权许可: 是指 用户从授权服务器获取授权码 到 将授权码交付给客户端 到 客户端从授权服务器获取到访问令牌的过程 称之为 收授权许可, 也称之为 授权许可流程, 在 OAuth 中指整个授权流程!
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------- 第3章 构建简单的 OAuth 客户端 ------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+使用 github 上的代码实现简单的客户端:
+    yangjianwei@yangjianweideMacBook-Pro oauth-in-action-code % cd exercises/ch-3-ex-1/
+
+    yangjianwei@yangjianweideMacBook-Pro ch-3-ex-1 % npm install
+
+    > spawn-sync@1.0.15 postinstall /Users/yangjianwei/IdeaProjects/oauth-in-action-code/exercises/ch-3-ex-1/node_modules/spawn-sync
+    > node postinstall
+
+    npm notice created a lockfile as package-lock.json. You should commit this file.
+    npm WARN ch-3-ex-1 No description
+    npm WARN ch-3-ex-1 No repository field.
+    npm WARN ch-3-ex-1 No license field.
+
+    added 90 packages from 63 contributors and audited 92 packages in 4.884s
+
+    8 packages are looking for funding
+      run `npm fund` for details
+
+    found 0 vulnerabilities
+
+    yangjianwei@yangjianweideMacBook-Pro ch-3-ex-1 % node client.js
+    yangjianwei@yangjianweideMacBook-Pro ch-3-ex-1 % node authorizationServer.js
+    yangjianwei@yangjianweideMacBook-Pro ch-3-ex-1 % node protectedResource.js
+
+
+
+
+
+
+
+
+
+
+
+
+
